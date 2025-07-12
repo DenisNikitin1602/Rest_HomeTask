@@ -1,0 +1,19 @@
+### Успешный запрос (admin)
+GET http://localhost:8080/authorize?user=admin&password=admin123
+Accept: application/json
+
+### Ошибка 400: пустой логин
+GET http://localhost:8080/authorize?user=&password=admin123
+Accept: application/json
+
+### Ошибка 400: пустой пароль
+GET http://localhost:8080/authorize?user=admin&password=
+Accept: application/json
+
+### Ошибка 401: неизвестный пользователь
+GET http://localhost:8080/authorize?user=unknown&password=test123
+Accept: application/json
+
+### Ошибка 400: нет параметров
+GET http://localhost:8080/authorize
+Accept: application/json
