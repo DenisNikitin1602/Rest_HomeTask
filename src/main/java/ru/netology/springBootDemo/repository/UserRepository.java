@@ -1,6 +1,7 @@
-package ru.netology.springBootDemo;
+package ru.netology.springBootDemo.repository;
 
 import org.springframework.stereotype.Repository;
+import ru.netology.springBootDemo.domain.Authorities;
 
 import java.util.Collections;
 import java.util.List;

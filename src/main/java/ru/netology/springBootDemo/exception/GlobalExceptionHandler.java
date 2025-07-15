@@ -1,4 +1,4 @@
-package ru.netology.springBootDemo;
+package ru.netology.springBootDemo.exception;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,16 +13,16 @@ public class GlobalExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     // Обработка InvalidCredentials — HTTP 400
-    @ExceptionHandler(InvalidCredentials.class)
+    @ExceptionHandler(InvalidCredentialsException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String handleInvalidCredentials(InvalidCredentials e) {
+    public String handleInvalidCredentials(InvalidCredentialsException e) {
         return e.getMessage();
     }
 
     // Обработка UnauthorizedUser — HTTP 401 + лог
-    @ExceptionHandler(UnauthorizedUser.class)
+    @ExceptionHandler(UnauthorizedUserException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    public String handleUnauthorizedUser(UnauthorizedUser e) {
+    public String handleUnauthorizedUser(UnauthorizedUserException e) {
         logger.warn("Unauthorized access attempt: {}", e.getMessage());
         return e.getMessage();
     }

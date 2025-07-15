@@ -2,10 +2,10 @@ package ru.netology.springBootDemo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.netology.springBootDemo.Authorities;
-import ru.netology.springBootDemo.InvalidCredentials;
-import ru.netology.springBootDemo.UnauthorizedUser;
-import ru.netology.springBootDemo.UserRepository;
+import ru.netology.springBootDemo.domain.Authorities;
+import ru.netology.springBootDemo.exception.InvalidCredentialsException;
+import ru.netology.springBootDemo.exception.UnauthorizedUserException;
+import ru.netology.springBootDemo.repository.UserRepository;
 
 import java.util.List;
 
@@ -21,11 +21,11 @@ public class AuthorizationService {
 
     public List<Authorities> getAuthorities(String user, String password) {
         if (isEmpty(user) || isEmpty(password)) {
-            throw new InvalidCredentials("User name or password is empty");
+            throw new InvalidCredentialsException("User name or password is empty");
         }
         List<Authorities> userAuthorities = userRepository.getUserAuthorities(user, password);
         if (isEmpty(userAuthorities)) {
-            throw new UnauthorizedUser("Unknown user " + user);
+            throw new UnauthorizedUserException("Unknown user " + user);
         }
         return userAuthorities;
     }

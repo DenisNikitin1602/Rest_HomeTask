@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.netology.springBootDemo.Authorities;
+import ru.netology.springBootDemo.domain.Authorities;
 import ru.netology.springBootDemo.service.AuthorizationService;
 
 import java.util.List;
